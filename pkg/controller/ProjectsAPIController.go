@@ -56,55 +56,16 @@ func (api ProjectsAPIController) GetProjects (c *gin.Context){
 	stringCount := UrlQueries.Get("count")
 	stringSortedBy := UrlQueries.Get("sortBy")
 	stringOffset := UrlQueries.Get("offset")
-	if (stringCount != ""){
-		count,err := strconv.Atoi(stringCount)
-		if err != nil {
-			error := "Invalid Count Query"
-			fmt.Println(error)
-			c.Error(err).SetType(gin.ErrorTypePublic)
-			c.JSON(
-				http.StatusBadRequest,
-				gin.H{
-					"Error": error,
-				},
-			)
-			return
-		}
-		getProjectQueriesPointer.Count = count
-	}
-	if (stringSortedBy != ""){
-		if (stringSortedBy != "Title"){
-			error := "Invalid sortedBy Query"
-			fmt.Println(error)
-			c.JSON(
-				http.StatusBadRequest,
-				gin.H{
-					"Error": error,
-				},
-			)
-			return
-		}
-		getProjectQueriesPointer.SortedBy = stringSortedBy
-	}
-	if (stringOffset != ""){
-		offset,err := strconv.Atoi(stringOffset)
-		if err != nil {
-			error := "Invalid Offset Query"
-			fmt.Println(error)
-			c.Error(err).SetType(gin.ErrorTypePublic)
-			c.JSON(
-				http.StatusBadRequest,
-				gin.H{
-					"Error": error,
-				},
-			)
-			return
-		}
-		getProjectQueriesPointer.Offset = offset
-	}
+	count,_ := strconv.Atoi(stringCount)
+	offset,_ := strconv.Atoi(stringOffset)
+	getProjectQueriesPointer.Count = count
+	getProjectQueriesPointer.SortedBy = stringSortedBy
+	getProjectQueriesPointer.Offset = offset
+
 	resp := api.srv.GetProject(getProjectQueriesPointer)
 	code := http.StatusOK
 	message := "Success"
+	// The error here is a valid query param in terms of the input domain, but limited by the data present in the "database"
 	if (resp.Error != ""){
 		code = http.StatusBadRequest
 		message = "Query Error"
@@ -117,5 +78,4 @@ func (api ProjectsAPIController) GetProjects (c *gin.Context){
 			"data": resp,
 		},
 	)
-	fmt.Println(resp)
 }

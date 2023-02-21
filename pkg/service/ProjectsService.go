@@ -3,7 +3,7 @@ package service
 import (
 
 	"github.com/ssjh23/PortfolioBackend/pkg/common/models"
-	"github.com/ssjh23/PortfolioBackend/pkg/repository/project"
+	"github.com/ssjh23/PortfolioBackend/pkg/repository"
 	"gorm.io/gorm"
 )
 

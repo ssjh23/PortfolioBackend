@@ -37,7 +37,7 @@ func Routes (r *gin.Engine){
 		Projects := route.Group("/project")
 		{
 			Projects.POST("/add_project", middleware.CheckAddProjectReqBody, ProjectsAPI.AddProject)
-			Projects.GET("/get_projects",ProjectsAPI.GetProjects)
+			Projects.GET("/get_projects", middleware.CheckGetProjectsQueries, ProjectsAPI.GetProjects)
 		}
 
 	}

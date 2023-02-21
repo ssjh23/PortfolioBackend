@@ -3,6 +3,7 @@ package middleware
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,6 +35,45 @@ func CheckAddProjectReqBody (c *gin.Context){
 			gin.H{
 				"Error": error,
 		})
+		c.Abort()
+	}
+	return
+}
+
+func CheckGetProjectsQueries(c *gin.Context){
+	UrlQueries := c.Request.URL.Query()
+	stringCount := UrlQueries.Get("count")
+	stringSortedBy := UrlQueries.Get("sortBy")
+	stringOffset := UrlQueries.Get("offset")
+	error := []string{}
+	if (stringCount != ""){
+		_, err := strconv.Atoi(stringCount)
+		if err != nil {
+			error = append(error, "Invalid Count Query")
+			c.Error(err).SetType(gin.ErrorTypePublic)
+
+		}
+	}
+	if (stringSortedBy != ""){
+		if (stringSortedBy != "Title"){
+			error = append(error, "Invalid sortBy Query")
+			
+		}
+	}
+	if (stringOffset != ""){
+		_,err := strconv.Atoi(stringOffset)
+		if err != nil {
+			error = append(error, "Invalid Offseet Query")
+			
+		}
+	}
+	if (len(error)!= 0){
+		c.JSON(
+			http.StatusBadRequest,
+			gin.H{
+				"Error": error,
+			},
+		)
 		c.Abort()
 	}
 	return

@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	api "github.com/ssjh23/PortfolioBackend/pkg/controller"
+	middleware "github.com/ssjh23/PortfolioBackend/pkg/middleware"
 	"github.com/ssjh23/PortfolioBackend/pkg/common/db"
 )
 
@@ -35,7 +36,7 @@ func Routes (r *gin.Engine){
 		ProjectsAPI := api.NewProjectsAPIController(orm)
 		Projects := route.Group("/project")
 		{
-			Projects.POST("/add_project", ProjectsAPI.AddProject)
+			Projects.POST("/add_project", middleware.CheckAddProjectReqBody, ProjectsAPI.AddProject)
 			Projects.GET("/get_projects",ProjectsAPI.GetProjects)
 		}
 

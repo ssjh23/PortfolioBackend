@@ -29,7 +29,7 @@ func NewProjectsAPIController(db *gorm.DB) *ProjectsAPIController {
 func (api ProjectsAPIController) AddProject(c *gin.Context){
 	err := c.Request.ParseMultipartForm(12000)
 	if err != nil {
-		fmt.Println("Error Retrieving Request Body")
+		fmt.Println("Error Retrieving Form Body")
 		c.Error(err).SetType(gin.ErrorTypePublic)
 		return
 	}
@@ -54,7 +54,7 @@ func (api ProjectsAPIController) GetProjects (c *gin.Context){
 	getProjectQueriesPointer := &getProjectQueries
 	UrlQueries := c.Request.URL.Query()
 	stringCount := UrlQueries.Get("count")
-	stringSortedBy := UrlQueries.Get("sortedBy")
+	stringSortedBy := UrlQueries.Get("sortBy")
 	stringOffset := UrlQueries.Get("offset")
 	if (stringCount != ""){
 		count,err := strconv.Atoi(stringCount)

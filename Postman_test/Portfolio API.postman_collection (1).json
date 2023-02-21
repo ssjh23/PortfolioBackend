@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "bd78ec07-c49e-44cb-8478-03eee4f45e5b",
+		"name": "Portfolio API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24051749"
+	},
+	"item": [
+		{
+			"name": "Get Profile Pic",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get Profile Pic Octet Stream\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data).to.eql(\"iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAFxAAABcQBm3m1AAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAQuSURBVHic7d1BahRBGIbht0JABe+gW1cuVNzoVQRvMHMAz+AcQBC8gWcwOxV05VbvIGhAKBfTE4zpmenprqr/r6rvXQXS0ymoJ9OdnnR1iDFyrBDCCrgXY1wf3VhV1fmxDYbJfz18jRC01dmhb/47+UOrEMLrfdur+toLYGTydwlBQ40CODD5u4SgkW4AmDD5u4Sgga4BOGHydwlB5V0BmDH5u4Sg4s5g0eTvEoJKC8DSyf+3Te7rBCGEx8CbGS+9jDE+TT2e2jsH7iXc36rAxaK7wMMZr7tMPZAWOhsma5NwnzocVNQZgBD029VfAULQZ9euAwhBf924EigEfTX6WYAQ9NPeTwOFoI8O/j+AELTfQQAgBK13FAAIQctNAgBC0GqTAYAQtNhJAEAIWutkACAELTULAAhBK80GAELQQosAgBDU3mIAIAQ1lwQACEGtJQMAQlBjSQGAENRWcgAgBDV1dH2AucUY1yEE2N53kKLVsL/3ifangDBlhZBFP2D7m5sKAcAF8GzG6y5jjLcTjqOJsgOALAjmJAAjZTkH+L8M5wQqUUUAgBB4rRgAEAKPFQUAQuCt4gBACDxlAgCEwEtmAEAIPGQKAITAukmXgodlWe5mHMd74DHzrvCpBU26EhhC+MK8ZVk8pSuBI5kfApRtAtB5AtB5AtB5AtB5PQHI/48PFdYTgO/WA/BYTwA+Wg/AYz0B+GA9AI/1AuAT8NZ6EB7rAcAv4EWM8Y/1QDzWOoBPwKMY4zfrgXht6o0hl9Sx3n5ke7b/ke0x/61+8w9X5L4A5bfWDwHqSALQeQLQeQLQeQLQeQLQeQLQeQLQeQLQednWCGqlEMI58BJ4DjwB7rN95rL3vk55VrIAHCiE8AB4x/aupdq6NWUjAdjTMPmfgTvWY8mZzgFGGt7239H45IMA7Osldb7tn5wAjPfcegClEoDxnlgPoFQCMN596wGUSgDGq+Hv/CQJQOcJQOcJQOcJQOcJQOfpswCbLoBXmX/Gzykb6caQkUIIv5n4adqCNsMimabpEGCXiwdhCYBt5ggEwD5TBALgIzMEAuAnEwQC4KviCATAX0URCIDPiiEQgLRdJNxXEQQCkLZXVPbUdAFIXIZnIGVFIAAZqgmBAGSqFgQCkLEaEAhA5rwjEIACeUYgAIXyikAACuYRgQAUzhsCATDIEwIBMMoLAgEwzAMCATDOGoEAOMgSgQA4yQqBADjKAoEAOKs0AgFwWEkEAuC0UggEwHElEAiA83IjEIAKyolAK4RUUoxxHUIAWCXa5SqEIAB7+sq8FUImLcsytwwIfmiJmAob3r6XIljHGDc6B6iwBOcE6xjjBnQSWG0LEFxNPghA1c1AcG3yQQCq7wQENyYfBKCJJiAYnXwQgGY6gGDv5IMANNUIgoOTD1oqtsmG6wQ/jk0+wF+mx9LTQ7nLHgAAAABJRU5ErkJggg==\");",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/about/get_profile_pic",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"about",
+						"get_profile_pic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Projects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Retrieve Base Projects\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.Projects).to.eql([",
+							"            {",
+							"                \"Title\": \"Scancart\",",
+							"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+							"                \"Techstack\": [",
+							"                    \"Android Studio\",",
+							"                    \"Java\",",
+							"                    \"Firebase\"",
+							"                ]",
+							"            },",
+							"            {",
+							"                \"Title\": \"What the Hack 2021\",",
+							"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+							"                \"Techstack\": [",
+							"                    \"Python\",",
+							"                    \"Telegram API\",",
+							"                    \"Firebase\",",
+							"                    \"Google Maps API\"",
+							"                ]",
+							"            }",
+							"        ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/project/get_projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"get_projects"
+					]
+				},
+				"description": "Get Projects"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Retrieve Base Projects\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.Projects).to.eql([",
+							"            {",
+							"                \"Title\": \"Scancart\",",
+							"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+							"                \"Techstack\": [",
+							"                    \"Android Studio\",",
+							"                    \"Java\",",
+							"                    \"Firebase\"",
+							"                ]",
+							"            },",
+							"            {",
+							"                \"Title\": \"What the Hack 2021\",",
+							"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+							"                \"Techstack\": [",
+							"                    \"Python\",",
+							"                    \"Telegram API\",",
+							"                    \"Firebase\",",
+							"                    \"Google Maps API\"",
+							"                ]",
+							"            },{",
+							"                \"Title\": \"REST API\",",
+							"                \"Description\": \"API in golang\",",
+							"                \"Techstack\": [",
+							"                    \"Go\",",
+							"                    \"Gin\"",
+							"                ]",
+							"            }",
+							"        ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "REST API",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "API in golang",
+							"type": "text"
+						},
+						{
+							"key": "techstack",
+							"value": "Go,Gin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/project/add_project",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"add_project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Project ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Retrieve Projects after delete\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.Projects).to.eql([",
+							"            {",
+							"                \"Title\": \"Scancart\",",
+							"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+							"                \"Techstack\": [",
+							"                    \"Android Studio\",",
+							"                    \"Java\",",
+							"                    \"Firebase\"",
+							"                ]",
+							"            },",
+							"            {",
+							"                \"Title\": \"What the Hack 2021\",",
+							"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+							"                \"Techstack\": [",
+							"                    \"Python\",",
+							"                    \"Telegram API\",",
+							"                    \"Firebase\",",
+							"                    \"Google Maps API\"",
+							"                ]",
+							"            }",
+							"        ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "1005263",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/project/delete_project?title=REST API",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"delete_project"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "REST API"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

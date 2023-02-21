@@ -1,12 +1,17 @@
-FROM golang:1.16 as base
+FROM golang:alpine
 
-# Create another stage called "dev" that is based off of our "base" stage (so we have golang available to us)
-FROM base as dev
+RUN mkdir /app
 
-# Install the air binary so we get live code-reloading when we save files
-RUN curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+WORKDIR /app
 
-# Run the air command in the directory where our code will live
-WORKDIR /opt/app/api
-RUN go mod tidy
-CMD ["air"]
+ADD go.mod .
+ADD go.sum .
+
+RUN go mod download
+ADD . .
+
+RUN go install -mod=mod github.com/githubnemo/CompileDaemon
+
+EXPOSE 8000
+
+ENTRYPOINT CompileDaemon --build="go build cmd/main.go" --command=./main

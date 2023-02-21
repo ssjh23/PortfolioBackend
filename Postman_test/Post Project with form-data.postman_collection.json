@@ -1,0 +1,424 @@
+{
+	"info": {
+		"_postman_id": "23b8db70-ee2a-4bf9-9f3b-def5e1731da3",
+		"name": "Post Project with form-data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24051749"
+	},
+	"item": [
+		{
+			"name": "Add REST API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "REST API",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "API in golang",
+							"type": "text"
+						},
+						{
+							"key": "techstack",
+							"value": "Go,Gin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/project/add_project",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"add_project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Projects includes REST API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Retrieve Updated Projects\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.Projects).to.eql([",
+							"            {",
+							"                \"Title\": \"Scancart\",",
+							"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+							"                \"Techstack\": [",
+							"                    \"Android Studio\",",
+							"                    \"Java\",",
+							"                    \"Firebase\"",
+							"                ]",
+							"            },",
+							"            {",
+							"                \"Title\": \"What the Hack 2021\",",
+							"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+							"                \"Techstack\": [",
+							"                    \"Python\",",
+							"                    \"Telegram API\",",
+							"                    \"Firebase\",",
+							"                    \"Google Maps API\"",
+							"                ]",
+							"            },{",
+							"                \"Title\": \"REST API\",",
+							"                \"Description\": \"API in golang\",",
+							"                \"Techstack\": [",
+							"                    \"Go\",",
+							"                    \"Gin\"",
+							"                ]",
+							"            }",
+							"        ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/project/get_projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"get_projects"
+					]
+				},
+				"description": "Get Projects"
+			},
+			"response": []
+		},
+		{
+			"name": "Empty Title",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Error).to.eql([\"Title is empty\"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "API in golang",
+							"type": "text"
+						},
+						{
+							"key": "techstack",
+							"value": "Go,Gin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/project/add_project",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"add_project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empty Description",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Error).to.eql([\"Description is empty\"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "REST API",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "techstack",
+							"value": "Go,Gin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/project/add_project",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"add_project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empty TechStack",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Error).to.eql([\"Tech stack is empty\"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "REST API",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "API in golang",
+							"type": "text"
+						},
+						{
+							"key": "techstack",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/project/add_project",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"add_project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All fields empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Error).to.eql([",
+							"        \"Title is empty\",",
+							"        \"Description is empty\",",
+							"        \"Tech stack is empty\"",
+							"    ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "techstack",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/project/add_project",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"add_project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete REST APi",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Retrieve Projects after delete\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.Projects).to.eql([",
+							"            {",
+							"                \"Title\": \"Scancart\",",
+							"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+							"                \"Techstack\": [",
+							"                    \"Android Studio\",",
+							"                    \"Java\",",
+							"                    \"Firebase\"",
+							"                ]",
+							"            },",
+							"            {",
+							"                \"Title\": \"What the Hack 2021\",",
+							"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+							"                \"Techstack\": [",
+							"                    \"Python\",",
+							"                    \"Telegram API\",",
+							"                    \"Firebase\",",
+							"                    \"Google Maps API\"",
+							"                ]",
+							"            }",
+							"        ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "1005263",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/project/delete_project?title=REST API",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"project",
+						"delete_project"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "REST API"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -4,17 +4,17 @@ import (
 
 	"github.com/ssjh23/PortfolioBackend/pkg/common/models"
 	"github.com/ssjh23/PortfolioBackend/pkg/repository"
-	"gorm.io/gorm"
+	// "gorm.io/gorm"
 )
 
 type ProjectsService struct {
-	db       *gorm.DB
+	// db       *gorm.DB
 	projects *project.ProjectRepo
 }
 
-func NewProjectsService(db *gorm.DB) *ProjectsService {
+func NewProjectsService() *ProjectsService {
 	return &ProjectsService{
-		db:       db,
+		// db:       db,
 		projects: &project.ProjectRepo{},
 	}
 }

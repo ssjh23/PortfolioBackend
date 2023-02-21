@@ -1,0 +1,894 @@
+{
+	"info": {
+		"_postman_id": "fcd00fcd-8d18-4208-bba9-c009356c24da",
+		"name": "GetProjects With Query",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24051749"
+	},
+	"item": [
+		{
+			"name": "Setup",
+			"item": [
+				{
+					"name": "Add REST API",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "REST API",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "API in golang",
+									"type": "text"
+								},
+								{
+									"key": "techstack",
+									"value": "Go,Gin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/project/add_project",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"add_project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add P2P",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "P2P",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "File P2P Connection for Networks",
+									"type": "text"
+								},
+								{
+									"key": "techstack",
+									"value": "WebRTC,Javascript",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/project/add_project",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"add_project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add ML",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "K Means ML",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "K Means ML for 50.007",
+									"type": "text"
+								},
+								{
+									"key": "techstack",
+									"value": "Python",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/project/add_project",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"add_project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Capstone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Setup Successfull\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data.Projects).to.eql([",
+									"            {",
+									"                \"Title\": \"Scancart\",",
+									"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+									"                \"Techstack\": [",
+									"                    \"Android Studio\",",
+									"                    \"Java\",",
+									"                    \"Firebase\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"What the Hack 2021\",",
+									"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+									"                \"Techstack\": [",
+									"                    \"Python\",",
+									"                    \"Telegram API\",",
+									"                    \"Firebase\",",
+									"                    \"Google Maps API\"",
+									"                ]",
+									"            },{",
+									"                \"Title\": \"REST API\",",
+									"                \"Description\": \"API in golang\",",
+									"                \"Techstack\": [",
+									"                    \"Go\",",
+									"                    \"Gin\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"P2P\",",
+									"                \"Description\": \"File P2P Connection for Networks\",",
+									"                \"Techstack\": [",
+									"                    \"WebRTC\",",
+									"                    \"Javascript\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"K Means ML\",",
+									"                \"Description\": \"K Means ML for 50.007\",",
+									"                \"Techstack\": [",
+									"                    \"Python\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"Capstone\",",
+									"                \"Description\": \"Distributed System IOT for BioForte\",",
+									"                \"Techstack\": [",
+									"                    \"gRPC\",",
+									"                    \"Go\",",
+									"                    \"C++\",",
+									"                    \"RPI\"",
+									"                ]",
+									"            }",
+									"        ]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Capstone",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Distributed System IOT for BioForte",
+									"type": "text"
+								},
+								{
+									"key": "techstack",
+									"value": "gRPC,Go,C++,RPI",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/project/add_project",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"add_project"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Projects test",
+			"item": [
+				{
+					"name": "Get Projects Sorted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Retrieve Sorted Projects, Sort by title alphabetically\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data.Projects).to.eql([",
+									"            {",
+									"                \"Title\": \"Capstone\",",
+									"                \"Description\": \"Distributed System IOT for BioForte\",",
+									"                \"Techstack\": [",
+									"                    \"gRPC\",",
+									"                    \"Go\",",
+									"                    \"C++\",",
+									"                    \"RPI\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"K Means ML\",",
+									"                \"Description\": \"K Means ML for 50.007\",",
+									"                \"Techstack\": [",
+									"                    \"Python\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"P2P\",",
+									"                \"Description\": \"File P2P Connection for Networks\",",
+									"                \"Techstack\": [",
+									"                    \"WebRTC\",",
+									"                    \"Javascript\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"REST API\",",
+									"                \"Description\": \"API in golang\",",
+									"                \"Techstack\": [",
+									"                    \"Go\",",
+									"                    \"Gin\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"Scancart\",",
+									"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+									"                \"Techstack\": [",
+									"                    \"Android Studio\",",
+									"                    \"Java\",",
+									"                    \"Firebase\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"What the Hack 2021\",",
+									"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+									"                \"Techstack\": [",
+									"                    \"Python\",",
+									"                    \"Telegram API\",",
+									"                    \"Firebase\",",
+									"                    \"Google Maps API\"",
+									"                ]",
+									"            }",
+									"        ]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/project/get_projects?sortBy=Title&count=0&offset=0",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"get_projects"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "Title"
+								},
+								{
+									"key": "count",
+									"value": "0"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Get Projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Projects Sorted Offset=3 Count=2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Retrieve Sorted Projects, Sort by title alphabetically\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data.Projects).to.eql([",
+									"            {",
+									"                \"Title\": \"REST API\",",
+									"                \"Description\": \"API in golang\",",
+									"                \"Techstack\": [",
+									"                    \"Go\",",
+									"                    \"Gin\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"Scancart\",",
+									"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+									"                \"Techstack\": [",
+									"                    \"Android Studio\",",
+									"                    \"Java\",",
+									"                    \"Firebase\"",
+									"                ]",
+									"            }",
+									"        ]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/project/get_projects?sortBy=Title&count=2&offset=3",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"get_projects"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "Title"
+								},
+								{
+									"key": "count",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Get Projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Count exceeds projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Count exceeds error\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data.Error).to.eql(\"The requested count exceeds the number of projects. Number of projects: 6\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/project/get_projects?sortBy=Title&count=7&offset=0",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"get_projects"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "Title"
+								},
+								{
+									"key": "count",
+									"value": "7"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Get Projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Offset Exceeds Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Count exceeds error\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data.Error).to.eql(\"The offset exceeds the number of project. Number of projects is 6\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/project/get_projects?sortBy=Title&count=0&offset=7",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"get_projects"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "Title"
+								},
+								{
+									"key": "count",
+									"value": "0"
+								},
+								{
+									"key": "offset",
+									"value": "7"
+								}
+							]
+						},
+						"description": "Get Projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Empty Params",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Retrieve Sorted Projects, Sort by title alphabetically\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data.Projects).to.eql([",
+									"            {",
+									"                \"Title\": \"Capstone\",",
+									"                \"Description\": \"Distributed System IOT for BioForte\",",
+									"                \"Techstack\": [",
+									"                    \"gRPC\",",
+									"                    \"Go\",",
+									"                    \"C++\",",
+									"                    \"RPI\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"K Means ML\",",
+									"                \"Description\": \"K Means ML for 50.007\",",
+									"                \"Techstack\": [",
+									"                    \"Python\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"P2P\",",
+									"                \"Description\": \"File P2P Connection for Networks\",",
+									"                \"Techstack\": [",
+									"                    \"WebRTC\",",
+									"                    \"Javascript\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"REST API\",",
+									"                \"Description\": \"API in golang\",",
+									"                \"Techstack\": [",
+									"                    \"Go\",",
+									"                    \"Gin\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"Scancart\",",
+									"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+									"                \"Techstack\": [",
+									"                    \"Android Studio\",",
+									"                    \"Java\",",
+									"                    \"Firebase\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"What the Hack 2021\",",
+									"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+									"                \"Techstack\": [",
+									"                    \"Python\",",
+									"                    \"Telegram API\",",
+									"                    \"Firebase\",",
+									"                    \"Google Maps API\"",
+									"                ]",
+									"            }",
+									"        ]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/project/get_projects",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"get_projects"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "Title",
+									"disabled": true
+								},
+								{
+									"key": "count",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get Projects"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teardown",
+			"item": [
+				{
+					"name": "Delete REST API",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "1005263",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/project/delete_project?title=REST API",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"delete_project"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "REST API"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete P2P",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "1005263",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/project/delete_project?title=P2P",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"delete_project"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "P2P"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ML",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "1005263",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/project/delete_project?title=K Means ML",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"delete_project"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "K Means ML"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Capstone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Teardown successful\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data.Projects).to.eql([",
+									"            {",
+									"                \"Title\": \"Scancart\",",
+									"                \"Description\": \"An Android App tailored to aiding the needs of the Elderly\",",
+									"                \"Techstack\": [",
+									"                    \"Android Studio\",",
+									"                    \"Java\",",
+									"                    \"Firebase\"",
+									"                ]",
+									"            },",
+									"            {",
+									"                \"Title\": \"What the Hack 2021\",",
+									"                \"Description\": \"A user-friendly IOT system that aims to boost the efficiencies of the waste-collection process in Singapore by reducing the travelling time and workload of waste-management employees\",",
+									"                \"Techstack\": [",
+									"                    \"Python\",",
+									"                    \"Telegram API\",",
+									"                    \"Firebase\",",
+									"                    \"Google Maps API\"",
+									"                ]",
+									"            }",
+									"        ]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "1005263",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/project/delete_project?title=Capstone",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"project",
+								"delete_project"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Capstone"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

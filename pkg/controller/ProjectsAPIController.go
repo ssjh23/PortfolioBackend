@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/ssjh23/PortfolioBackend/pkg/common/models"
 	"github.com/ssjh23/PortfolioBackend/pkg/service"
-	"gorm.io/gorm"
+	// "gorm.io/gorm"
 )
 
 type ProjectsAPIController struct {
@@ -17,9 +17,9 @@ type ProjectsAPIController struct {
 }
 
 // Create address of APIService layer
-func NewProjectsAPIController(db *gorm.DB) *ProjectsAPIController {
+func NewProjectsAPIController() *ProjectsAPIController {
 	return &ProjectsAPIController{
-		srv: service.NewProjectsService(db),
+		srv: service.NewProjectsService(),
 	}
 }
 // Pointer receiver to DB

@@ -1,14 +1,14 @@
 package service
 
 import (
-	"gorm.io/gorm"
+	// "gorm.io/gorm"
 )
 type AboutService struct {
-	db *gorm.DB
+	// db *gorm.DB
 }
 
-func NewAboutService(db *gorm.DB) *AboutService {
+func NewAboutService() *AboutService {
 	return &AboutService{
-		db: db,
+		// db: db,
 	}
 }

@@ -7,7 +7,7 @@ import (
 	"github.com/ssjh23/PortfolioBackend/pkg/service"
     "github.com/gin-gonic/gin"
 
-	"gorm.io/gorm"
+	// "gorm.io/gorm"
 )
 
 type AboutAPIController struct {
@@ -15,9 +15,9 @@ type AboutAPIController struct {
 }
 
 // Create address of APIService layer
-func NewAboutAPIController(db *gorm.DB) *AboutAPIController {
+func NewAboutAPIController() *AboutAPIController {
 	return &AboutAPIController{
-		srv: service.NewAboutService(db),
+		srv: service.NewAboutService(),
 	}
 }
 // Pointer receiver to DB
@@ -31,7 +31,7 @@ func (AboutAPIController) GetProfilePicture(c *gin.Context){
 	}
 	
 	c.Writer.WriteHeader(http.StatusAccepted)
-	c.Writer.Header().Set("Content-Type", "image/png")
+	c.Writer.Header().Set("Content-Type", "application/octet-stream")
 	c.JSON(
 		http.StatusOK,
 		gin.H{

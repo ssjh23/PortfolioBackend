@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/viper"
 	api "github.com/ssjh23/PortfolioBackend/pkg/controller"
 	middleware "github.com/ssjh23/PortfolioBackend/pkg/middleware"
-	"github.com/ssjh23/PortfolioBackend/pkg/common/db"
+	// "github.com/ssjh23/PortfolioBackend/pkg/common/db"
 )
 
 
@@ -14,7 +14,7 @@ func Routes (r *gin.Engine){
     port := viper.Get("PORT").(string)
     dbUrl := viper.Get("DB_URL").(string)
 	route := r.Group("")
-	orm := db.Init((dbUrl))
+	// orm := db.Init((dbUrl))
 	{
 		route.GET("/ping",func(ctx *gin.Context){
 			ctx.JSON(
@@ -28,12 +28,12 @@ func Routes (r *gin.Engine){
 				},
 			)
 		})
-		AboutAPI := api.NewAboutAPIController(orm)
+		AboutAPI := api.NewAboutAPIController()
 		About := route.Group("/about")
 		{
 			About.GET("/get_profile_pic",AboutAPI.GetProfilePicture)
 		}
-		ProjectsAPI := api.NewProjectsAPIController(orm)
+		ProjectsAPI := api.NewProjectsAPIController()
 		Projects := route.Group("/project")
 		{
 			Projects.POST("/add_project", middleware.CheckAddProjectReqBody, ProjectsAPI.AddProject)

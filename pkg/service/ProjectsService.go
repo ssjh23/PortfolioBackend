@@ -28,3 +28,8 @@ func (srv ProjectsService) GetProject(queries *models.GetProjectQueries)(resp mo
 	resp = srv.projects.GetProjects(queries)
 	return
 }
+
+func (srv ProjectsService) DeleteProject(query *models.DeleteProjectQuery)(resp models.DeleteProjectResp){
+	resp = srv.projects.DeleteProject(query)
+	return
+}

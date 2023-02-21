@@ -22,8 +22,17 @@ type AddProjectResp struct {
 	Projects []ProjectItem
 }
 
+type DeleteProjectResp struct {
+	Error string
+	Projects []ProjectItem
+}
+
 type GetProjectsResp struct {
 	Error string
 	Queries  GetProjectQueries
 	Projects []ProjectItem
+}
+
+type DeleteProjectQuery struct {
+	Title string 
 }

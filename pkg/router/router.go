@@ -38,6 +38,7 @@ func Routes (r *gin.Engine){
 		{
 			Projects.POST("/add_project", middleware.CheckAddProjectReqBody, ProjectsAPI.AddProject)
 			Projects.GET("/get_projects", middleware.CheckGetProjectsQueries, ProjectsAPI.GetProjects)
+			Projects.DELETE("/delete_project",middleware.CheckDeleteProjectQuery, ProjectsAPI.DeleteProject)
 		}
 
 	}

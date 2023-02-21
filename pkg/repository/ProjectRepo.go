@@ -83,3 +83,29 @@ func (repo ProjectRepo) GetProjects(queries *models.GetProjectQueries)(resp mode
 	resp.Projects = slicedProjects
 	return resp
 }
+
+func (repo ProjectRepo) DeleteProject (query *models.DeleteProjectQuery)(resp models.DeleteProjectResp){
+	resp = models.DeleteProjectResp{}
+	allProjects := (*existing_proj_pointer)
+	removed := false
+	for i, project := range allProjects{
+		if (project.Title == query.Title){
+			updatedList := RemoveFromList(i, allProjects)
+			existing_proj_pointer = &updatedList
+			removed = true
+		}
+	}
+	if (!removed){
+		resp.Error = "The title cannot be found in the list of projects"
+	}
+	resp.Projects = (*existing_proj_pointer)
+	return resp
+}
+
+func RemoveFromList(index int, allProjects []models.ProjectItem)(updatedProjects []models.ProjectItem){
+	leftOfDeleted := allProjects[:index]
+	rightOfDeleted := allProjects[index+1:]
+	updatedList := append(leftOfDeleted, rightOfDeleted...)
+	return updatedList
+
+}

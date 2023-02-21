@@ -79,3 +79,28 @@ func CheckGetProjectsQueries(c *gin.Context){
 	return
 
 }
+
+func CheckDeleteProjectQuery(c *gin.Context){
+	AuthToken := c.Request.Header.Get("Authorization")
+	if (AuthToken != "1005263"){
+		c.JSON(
+			http.StatusUnauthorized,
+			gin.H{
+				"Error": "Unauthorized",
+			},
+		)
+		c.Abort()
+	}
+	UrlQueries := c.Request.URL.Query()
+	title := UrlQueries.Get("title")
+	if (title == ""){
+		c.JSON(
+			http.StatusBadRequest,
+			gin.H{
+				"Error": "Empty Field Title",
+			},
+		)
+		c.Abort()
+	}
+	return
+}
